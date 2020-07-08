@@ -41,13 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PetModels\PetCreate.cs" />
+    <Compile Include="PetModels\PetEdit.cs" />
+    <Compile Include="PetModels\PetListDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppointmentModels\" />
-    <Folder Include="PetModels\" />
     <Folder Include="PetOwnerModels\" />
     <Folder Include="ServiceProviderModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PetHelper.Data\PetHelper.Data.csproj">
+      <Project>{1D44D989-3C7A-415E-93E8-EC3939A3D3DC}</Project>
+      <Name>PetHelper.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
