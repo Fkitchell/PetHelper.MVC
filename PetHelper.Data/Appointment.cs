@@ -15,13 +15,13 @@ namespace PetHelper.Data
         public DateTimeOffset DateAndTime { get; set; }
 
         [ForeignKey("PetOwner")]
-
         [Required]
-        public Guid PetOwnerId
-        { get; set; }
+        public Guid PetOwnerId { get; set; }
+
         [Display(Name = "Pet Owner")]
         public virtual PetOwner PetOwner { get; set; }
-        public Pet Pet { get; set; }
+        
+        public virtual Pet Pet { get; set; }
 
         [ForeignKey("ServiceProvider")]
         [Display(Name = "Service Provider")]

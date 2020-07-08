@@ -12,12 +12,17 @@ namespace PetHelper.Data
     {
         [Key]
         public Guid PetId { get; set; }
+        
         [Required]
         [Display(Name = "Pet's Name")]
         public string Name { get; set; }
+        
         [Required]
         [Display(Name = "Type of Pet")]
         public string Type { get; set; }
+
+        [ForeignKey("PetOwner")]
+        public Guid PetOwnerId { get; set; }
         public virtual PetOwner PetOwner { get; set; }
     }
 }
