@@ -10,9 +10,11 @@ namespace PetHelper.Data
 {
     public class Appointment
     {
+        [Key]
+        public int AppointmentId { get; set; }
         [Display(Name = "Date and Time")]
         [Required]
-        public DateTimeOffset DateAndTime { get; set; }
+        public DateTimeOffset DateTimeOffSet { get; set; }
 
         [ForeignKey("PetOwner")]
         [Required]

@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,13 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppointmentModels\AppointmentCreate.cs" />
+    <Compile Include="AppointmentModels\AppointmentEdit.cs" />
+    <Compile Include="AppointmentModels\AppointmentListDetail.cs" />
     <Compile Include="PetModels\PetCreate.cs" />
     <Compile Include="PetModels\PetEdit.cs" />
     <Compile Include="PetModels\PetListDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AppointmentModels\" />
     <Folder Include="PetOwnerModels\" />
     <Folder Include="ServiceProviderModels\" />
   </ItemGroup>
