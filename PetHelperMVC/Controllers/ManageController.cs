@@ -6,7 +6,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using PetHelperMVC.Models;
+using PetHelper.Models.AccountModels;
+using PetHelper.Models;
 
 namespace PetHelperMVC.Controllers
 {

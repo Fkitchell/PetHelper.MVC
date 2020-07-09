@@ -11,7 +11,7 @@ namespace PetHelper.Data
     public enum ServiceType { Walking, Sitting, Grooming, Training, }
     public class ServiceProvider : ApplicationUser
     {
-        [Display(Name ="Pet Specialities")]
+        [Display(Name ="Pet Specialties")]
         [Required]
         public List<string>  PetSpecialities { get; set; }
 
