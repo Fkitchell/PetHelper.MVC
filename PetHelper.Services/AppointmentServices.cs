@@ -35,7 +35,7 @@ namespace PetHelper.Services
 
         public List<AppointmentListDetail> GetAppointmentsByUserId(Guid _userId)
         {
-            var entity = _dbContext.Appointments.Where(e => e.PetOwnerId == _userId).ToList();
+            var entity = _dbContext.Appointments.Where(e => e.PetOwnerId == _userId);
             return entity.Select(a => new AppointmentListDetail
             {
                 Pet = a.Pet,

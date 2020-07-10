@@ -12,6 +12,7 @@ namespace PetHelper.Data
     {
         [Key]
         public int AppointmentId { get; set; }
+
         [Display(Name = "Date and Time")]
         [Required]
         public DateTimeOffset DateTimeOffSet { get; set; }

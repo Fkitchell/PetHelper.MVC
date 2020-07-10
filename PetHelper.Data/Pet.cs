@@ -11,7 +11,7 @@ namespace PetHelper.Data
     public class Pet
     {
         [Key]
-        public Guid PetId { get; set; }
+        public int PetId { get; set; }
         
         [Required]
         [Display(Name = "Pet's Name")]
