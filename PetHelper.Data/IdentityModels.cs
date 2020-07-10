@@ -41,6 +41,7 @@ namespace PetHelperMVC.Data
         }
 
         public DbSet<Pet> Pets { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
     }
 
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>

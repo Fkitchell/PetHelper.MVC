@@ -18,7 +18,7 @@ namespace PetHelper.Models.AppointmentModels
 
         public Pet Pet { get; set; }
 
-        public ServiceProvider ServiceProvider { get; set; }
+        public Guid ServiceProviderId { get; set; }
 
         public ServiceType ServiceType { get; set; }
     }
