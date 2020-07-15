@@ -44,7 +44,7 @@ namespace PetHelper.Services
             });
         }
 
-        public List<PetListDetail> GetPetsByUserId(Guid _userId)
+        public List<PetListDetail> GetPetsByUserId()
         {
             var entity = _dbContext.Pets.Where(e => e.PetOwnerId == _userId).ToList();
             return (List<PetListDetail>)entity.Select(a=> new PetListDetail
@@ -64,7 +64,7 @@ namespace PetHelper.Services
             return _dbContext.SaveChanges() == 1;
         }
 
-        public bool DeletePet(int petId)
+        public bool DeletePetById(int petId)
         {
             var entity = _dbContext.Pets.Single(e => e.PetId == petId && e.PetOwnerId == _userId);
 
