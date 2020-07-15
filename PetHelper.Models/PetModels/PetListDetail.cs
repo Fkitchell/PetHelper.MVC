@@ -9,6 +9,7 @@ namespace PetHelper.Models.PetModels
 {
     public class PetListDetail
     {
+        public int PetId { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
         public PetOwner PetOwner { get; set; }
