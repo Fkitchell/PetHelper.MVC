@@ -17,13 +17,15 @@ namespace PetHelper.Data
         [Required]
         public DateTimeOffset DateTimeOffSet { get; set; }
 
-        [ForeignKey("PetOwner")]
-        [Required]
-        public Guid PetOwnerId { get; set; }
+        //[ForeignKey("PetOwner")]   //consider removing this because Pet has a FK of PetOwner, and if there is an Appointment tied to a pet, then it is inherently tied to the PetOwner of that Pet
+        //[Required]
+        //public Guid PetOwnerId { get; set; }
 
-        [Display(Name = "Pet Owner")]
-        public virtual PetOwner PetOwner { get; set; }
-        
+        //[Display(Name = "Pet Owner")]
+        //public virtual PetOwner PetOwner { get; set; }
+
+        [ForeignKey("Pet")]
+        public int PetId { get; set; }
         public virtual Pet Pet { get; set; }
 
         [ForeignKey("ServiceProvider")]

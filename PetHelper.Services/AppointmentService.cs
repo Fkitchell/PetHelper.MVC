@@ -24,8 +24,7 @@ namespace PetHelper.Services
             var entity = new Appointment
             {
                 DateTimeOffSet = model.DateTimeOffSet,
-                Pet = model.Pet,
-                PetOwnerId = _userId,
+                PetId = model.PetId,
                 ServiceProviderId = model.ServiceProviderId,
                 ServiceType = model.ServiceType
             };
@@ -33,9 +32,9 @@ namespace PetHelper.Services
             return _dbContext.SaveChanges() == 1;
         }
 
-        public List<AppointmentListDetail> GetAppointmentsByUserId(Guid _userId)
+        public List<AppointmentListDetail> GetAppointmentsByUserId()
         {
-            var entity = _dbContext.Appointments.Where(e => e.PetOwnerId == _userId);
+            var entity = _dbContext.Appointments.Where(e => e.Pet.PetOwnerId == _userId);
             return entity.Select(a => new AppointmentListDetail
             {
                 Pet = a.Pet,
@@ -48,7 +47,7 @@ namespace PetHelper.Services
 
         public AppointmentListDetail GetAppointmentById(int id)
         {
-            Appointment entity = (Appointment)_dbContext.Appointments.Where(e => e.PetOwnerId == _userId && e.AppointmentId == id);
+            Appointment entity = (Appointment)_dbContext.Appointments.Where(e => e.Pet.PetOwnerId == _userId && e.AppointmentId == id);
             return new AppointmentListDetail
             {
                 Pet = entity.Pet,
@@ -61,7 +60,7 @@ namespace PetHelper.Services
 
         public bool UpdateAppointment(AppointmentEdit model)
         {
-            var entity = _dbContext.Appointments.Single(e => e.AppointmentId == model.AppoinmentId && e.PetOwnerId == _userId);
+            var entity = _dbContext.Appointments.Single(e => e.AppointmentId == model.AppoinmentId && e.Pet.PetOwnerId == _userId);
 
             entity.Pet = model.Pet;
             entity.DateTimeOffSet = model.DateTimeOffSet;
@@ -71,9 +70,9 @@ namespace PetHelper.Services
             return _dbContext.SaveChanges() == 1;
         }
 
-        public bool DeleteAppointment(int appointmentId)
+        public bool DeleteAppointmentByAppointmentId(int appointmentId)
         {
-            _dbContext.Appointments.Remove(_dbContext.Appointments.Single(e => e.AppointmentId == appointmentId && e.PetOwnerId == _userId));
+            _dbContext.Appointments.Remove(_dbContext.Appointments.Single(e => e.AppointmentId == appointmentId && e.Pet.PetOwnerId == _userId));
 
             return _dbContext.SaveChanges() == 1;
         }

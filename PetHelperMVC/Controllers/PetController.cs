@@ -97,7 +97,7 @@ namespace PetHelperMVC.Controllers
             var service = CreatePetService();
             if (service.UpdatePet(model))
             {
-                TempData["SaveResult"] = "Your note was created.";
+                TempData["SaveResult"] = "Your pet was updated.";
                 return RedirectToAction("Index");
             }
 

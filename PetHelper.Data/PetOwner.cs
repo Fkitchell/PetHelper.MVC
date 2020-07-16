@@ -6,6 +6,7 @@ namespace PetHelper.Data
 {
     public class PetOwner : ApplicationUser
     {
-        public virtual ICollection<Pet> Pets{ get; set; }
+        
+        public virtual ICollection<Pet> Pets { get; set; }
     }
 }

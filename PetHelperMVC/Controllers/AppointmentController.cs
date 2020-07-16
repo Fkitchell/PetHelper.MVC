@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using PetHelper.Models.AppointmentModels;
+using PetHelper.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,18 +9,13 @@ using System.Web.Mvc;
 
 namespace PetHelperMVC.Controllers
 {
+    [Authorize(Roles = "PetOwner")]
     public class AppointmentController : Controller
     {
-        // GET: Appointment
-        public ActionResult Index()
+        private AppointmentService CreateAppointmentService()
         {
-            return View();
-        }
-
-        // GET: Appointment/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            return new AppointmentService(userId);
         }
 
         // GET: Appointment/Create
@@ -28,62 +26,91 @@ namespace PetHelperMVC.Controllers
 
         // POST: Appointment/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(AppointmentCreate model)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            if (!ModelState.IsValid) return View(model);
 
+            var service = CreateAppointmentService();
+
+            if (service.CreateAppointment(model))
+            {
+                TempData["SaveResult"] = "Appointment created successfully.";
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
-        }
 
-        // GET: Appointment/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Appointment/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            ModelState.AddModelError("", "Appointment could not be created.");
+            return View(model);
         }
 
         // GET: Appointment/Delete/5
-        public ActionResult Delete(int id)
+        [ActionName("Delete")]
+        public ActionResult Delete(int appointmentId)
         {
-            return View();
+            var service = CreateAppointmentService();
+            var model = service.GetAppointmentById(appointmentId);
+            return View(model);
         }
 
         // POST: Appointment/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        [ActionName("Delete")]
+        public ActionResult DeleteAppointment(int appointmentId)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            var service = CreateAppointmentService();
+            service.DeleteAppointmentByAppointmentId(appointmentId);
+            TempData["SaveResult"] = "Appointment deleted successfully.";
+            return RedirectToAction("Index");
+        }
 
+        // GET: Appointment/Details/5
+        public ActionResult Details(int appointmentId)
+        {
+            var service = CreateAppointmentService();
+            var model = service.GetAppointmentById(appointmentId);
+            return View(model);
+        }
+
+        // GET: Appointment/Edit/5
+        public ActionResult Edit(int appointmentId)
+        {
+            var service = CreateAppointmentService();
+            var model = service.GetAppointmentById(appointmentId);
+            return View(model);
+        }
+
+        // POST: Appointment/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int appointmentId, AppointmentEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.AppoinmentId != appointmentId)
+            {
+                ModelState.AddModelError("", "ID mismatch.");
+                return View(model);
+            }
+
+            var service = CreateAppointmentService();
+            if (service.UpdateAppointment(model))
+            {
+                TempData["SaveResult"] = "Your appointment was updated.";
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            ModelState.AddModelError("", "Your appointment could not be updated.");
+            return View(model);
+        }
+
+        // GET: Appointment
+        public ActionResult Index()
+        {
+            var service = CreateAppointmentService();
+            var model = service.GetAppointmentsByUserId();
+            return View(model);
         }
     }
 }
+

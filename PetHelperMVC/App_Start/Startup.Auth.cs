@@ -6,7 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using PetHelperMVC.Data;
-using PetHelperMVC.Models;
+using PetHelper.Models;
 
 namespace PetHelperMVC
 {
