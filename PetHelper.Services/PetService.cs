@@ -44,10 +44,10 @@ namespace PetHelper.Services
             });
         }
 
-        public List<PetListDetail> GetPetsByUserId()
+        public IEnumerable<PetListDetail> GetPetsByUserId()
         {
             var entity = _dbContext.Pets.Where(e => e.PetOwnerId == _userId).ToList();
-            return (List<PetListDetail>)entity.Select(a=> new PetListDetail
+            return entity.Select(a=> new PetListDetail
             {
                 Name = a.Name,
                 PetType = a.PetType,
