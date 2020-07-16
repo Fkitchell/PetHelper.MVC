@@ -25,6 +25,7 @@ namespace PetHelper.Services
             {
                 DateTimeOffSet = model.DateTimeOffSet,
                 PetId = model.PetId,
+                
                 ServiceProviderId = model.ServiceProviderId,
                 ServiceType = model.ServiceType
             };

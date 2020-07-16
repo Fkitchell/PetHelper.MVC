@@ -10,17 +10,17 @@ namespace PetHelper.Models.AppointmentModels
 {
     public class AppointmentEdit
     {
-        public string ServiceProviderId { get; set; }
 
         public int AppoinmentId { get; set; }
+
         [Display(Name = "Date and Time")]
         public DateTimeOffset DateTimeOffSet { get; set; }
-
-        [Display(Name = "Pet Owner")]
-        public PetOwner PetOwner { get; set; }
+        
+        public string ServiceProviderId { get; set; }
 
         public Pet Pet { get; set; }
 
+        [Display(Name ="Type of Service")]
         public ServiceType ServiceType { get; set; }
     }
 }
