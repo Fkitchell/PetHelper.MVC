@@ -25,7 +25,7 @@ namespace PetHelper.Services
             {
                 Name = model.Name,
                 PetOwnerId = _userId,
-                Type = model.Type,
+                PetType = model.PetType,
             };
 
             _dbContext.Pets.Add(entity);
@@ -40,7 +40,7 @@ namespace PetHelper.Services
             return (PetListDetail)entity.Select(a => new PetListDetail
             {
                 Name = a.Name,
-                Type = a.Type,
+                PetType = a.PetType,
             });
         }
 
@@ -50,7 +50,7 @@ namespace PetHelper.Services
             return (List<PetListDetail>)entity.Select(a=> new PetListDetail
             {
                 Name = a.Name,
-                Type = a.Type,
+                PetType = a.PetType,
             });
         }
 
@@ -59,7 +59,7 @@ namespace PetHelper.Services
             var entity = _dbContext.Pets.Single(e => e.PetId == model.PetId && e.PetOwnerId == _userId);
 
             entity.Name = model.Name;
-            entity.Type = model.Type;
+            entity.PetType = model.PetType;
 
             return _dbContext.SaveChanges() == 1;
         }

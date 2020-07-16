@@ -11,7 +11,7 @@ namespace PetHelper.Models.PetModels
     {
         public string Name { get; set; }
 
-        public string Type { get; set; }
+        public PetType PetType { get; set; }
         public PetOwner PetOwner { get; set; }
     }
 }
