@@ -44,10 +44,10 @@ namespace PetHelperMVC.Controllers
 
         // GET: Pet/Delete/5
         [ActionName("Delete")]
-        public ActionResult Delete(int petId)
+        public ActionResult Delete(int id)
         {
             var service = CreatePetService();
-            var model = service.GetPetByPetId(petId);
+            var model = service.GetPetByPetId(id);
             return View(model);
         }
 
@@ -55,40 +55,48 @@ namespace PetHelperMVC.Controllers
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeletePet(int petId)
+        public ActionResult DeletePet(int id)
         {
             var service = CreatePetService();
-            service.DeletePetById(petId);
+            service.DeletePetById(id);
             TempData["SaveResult"] = "Your pet was deleted.";
             return RedirectToAction("Index");
         }
 
         // GET: Pet/Details/5
-        public ActionResult Details(int petId)
+        public ActionResult Details(int id)
         {
             var service = CreatePetService();
-            var model = service.GetPetByPetId(petId);
+            var model = service.GetPetByPetId(id);
             return View(model);
         }
 
 
         // GET: Pet/Edit/5
-        public ActionResult Edit(int petId)
+        [ActionName("Edit")]
+        [HttpGet]
+        public ActionResult Edit(int id)
         {
             var service = CreatePetService();
-            var model = service.GetPetByPetId(petId);
-
+            var detail = service.GetPetByPetId(id);
+            var model = new PetEdit
+            {
+                Name = detail.Name,
+                PetType = detail.PetType,
+                PetId = detail.PetId
+            };
+                
             return View(model);
         }
 
         // POST: Pet/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int petId, PetEdit model)
+        public ActionResult Edit(int id, PetEdit model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (model.PetId != petId)
+            if (model.PetId != id)
             {
                 ModelState.AddModelError("", "ID mismatch.");
                 return View(model);

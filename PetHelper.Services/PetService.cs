@@ -35,20 +35,24 @@ namespace PetHelper.Services
 
         public PetListDetail GetPetByPetId(int petId)
         {
-            var entity = _dbContext.Pets.Where(e => e.PetId == petId && e.PetOwnerId == _userId);
+            var entity = _dbContext.Pets.Find(petId);
 
-            return (PetListDetail)entity.Select(a => new PetListDetail
+            var temp = new PetListDetail
             {
-                Name = a.Name,
-                PetType = a.PetType,
-            });
+                PetId = entity.PetId,
+                Name = entity.Name,
+                PetType = entity.PetType,
+            };
+
+            return temp;
         }
 
         public IEnumerable<PetListDetail> GetPetsByUserId()
         {
             var entity = _dbContext.Pets.Where(e => e.PetOwnerId == _userId).ToList();
-            return entity.Select(a=> new PetListDetail
+            return entity.Select(a => new PetListDetail
             {
+                PetId = a.PetId,
                 Name = a.Name,
                 PetType = a.PetType,
             });
