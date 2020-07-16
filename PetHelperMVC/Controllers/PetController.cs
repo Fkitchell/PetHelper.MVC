@@ -9,12 +9,12 @@ using System.Web.Mvc;
 
 namespace PetHelperMVC.Controllers
 {
-    [Authorize(Roles = "PetOwner")]
+    //[Authorize(Roles = "PetOwner")]
     public class PetController : Controller
     {
         private PetService CreatePetService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
+            var userId = User.Identity.GetUserId();
             return new PetService(userId);
         }
 

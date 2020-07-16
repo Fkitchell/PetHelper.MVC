@@ -19,7 +19,7 @@ namespace PetHelperMVC.Data
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-        public virtual ICollection<Appointment> Appointments { get; set; }
+        //public virtual ICollection<Appointment> Appointments { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

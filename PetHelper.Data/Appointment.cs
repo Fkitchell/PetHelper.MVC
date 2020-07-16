@@ -31,7 +31,7 @@ namespace PetHelper.Data
         [ForeignKey("ServiceProvider")]
         [Display(Name = "Service Provider")]
         [Required]
-        public Guid ServiceProviderId { get; set; }
+        public string ServiceProviderId { get; set; }
         public virtual ServiceProvider ServiceProvider { get; set; }
 
         [Required]

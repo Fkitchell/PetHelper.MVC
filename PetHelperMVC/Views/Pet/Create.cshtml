@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Add a New Pet</h2>
+<h2>Create</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <!--<h4>PetCreate</h4>-->
+        <h4>PetCreate</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -22,13 +22,13 @@
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PetType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                @Html.EnumDropDownListFor(x => x.PetType, "Select The Type of Pet:", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PetType, "", new { @class = "text-danger" })
             </div>
+
         </div>
 
         <div class="form-group">

@@ -11,9 +11,9 @@ namespace PetHelper.Services
 {
     public class AppointmentService
     {
-        private readonly Guid _userId;
+        private readonly string _userId;
         private readonly ApplicationDbContext _dbContext;
-        public AppointmentService(Guid userId)
+        public AppointmentService(string userId)
         {
             _dbContext = new ApplicationDbContext();
             _userId = userId;

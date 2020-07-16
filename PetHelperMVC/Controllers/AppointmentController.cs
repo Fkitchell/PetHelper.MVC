@@ -14,7 +14,7 @@ namespace PetHelperMVC.Controllers
     {
         private AppointmentService CreateAppointmentService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
+            var userId = User.Identity.GetUserId();
             return new AppointmentService(userId);
         }
 

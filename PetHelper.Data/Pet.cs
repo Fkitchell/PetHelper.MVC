@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PetHelper.Data
 {
-    public enum PetType { Dog, Cat, Rabbit, Ferret, Pig, Rodent, Bird, Turtle, Lizards, Snake, Fish, Frog, Salamander, Spider, Other }
+    public enum PetType { Bird, Cat, Dog, Ferret, Fish, Frog, Lizards, Pig, Rabbit, Rodent, Salamander, Snake, Spider, Turtle, Other }
 
     public class Pet
     {
@@ -24,7 +24,7 @@ namespace PetHelper.Data
         public PetType PetType { get; set; }
 
         [ForeignKey("PetOwner")]
-        public Guid PetOwnerId { get; set; }
+        public string PetOwnerId { get; set; }
         public virtual PetOwner PetOwner { get; set; }
     }
 }
