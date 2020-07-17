@@ -19,7 +19,14 @@ namespace PetHelperMVC.Data
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-        
+        [Display(Name = "Full Name")]
+        public string FullName
+        {
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
+        }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
