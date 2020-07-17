@@ -240,6 +240,7 @@
     <Content Include="Views\Pet\Index.cshtml" />
     <Content Include="Views\Pet\Create.cshtml" />
     <Content Include="Views\Appointment\Create.cshtml" />
+    <Content Include="Views\Appointment\RenderPetsByPetOwnerId.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

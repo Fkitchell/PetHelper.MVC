@@ -1,0 +1,35 @@
+﻿@model IEnumerable<PetHelper.Models.PetModels.PetListDetail>
+
+@{
+    ViewBag.Title = "RenderPetsByPetOwnerId";
+}
+
+
+
+<table class="table  text-center">
+    <tr>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.PetType)
+        </th>
+        <th class="text-center">Select this Pet:</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.PetType)
+            </td>
+            <td class="text-center">
+                <input data-val="true" data-val-number="Please select one button corresponding to your pet." data-val-required="Please select one button corresponding to your pet." id="item_PetId" name="item.PetId" type="radio" value="@item.PetId">
+            </td>
+        </tr>
+    }
+
+</table>

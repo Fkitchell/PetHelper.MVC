@@ -16,7 +16,9 @@ namespace PetHelper.Models.AppointmentModels
         public int PetId { get; set; }
 
         public string ServiceProviderId { get; set; }
-
+        
         public ServiceType ServiceType { get; set; }
+
+        //public list<serviceprovider> serviceproviders {set;} searches dbSet.ServiceProviders
     }
 }

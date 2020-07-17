@@ -12,11 +12,9 @@ namespace PetHelper.Data
     public class ServiceProvider : ApplicationUser
     {
         [Display(Name ="Pet Specialties")]
-        [Required]
-        public List<string>  PetSpecialities { get; set; }
+        public List<PetType>  PetSpecialities { get; set; }
 
         [Display(Name = "Services Offered")]
-        [Required]
         public List<ServiceType> ServiceTypes { get; set; }
     }
 }

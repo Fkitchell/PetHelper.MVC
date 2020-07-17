@@ -11,6 +11,7 @@ namespace PetHelper.Models.PetModels
     public class PetEdit
     {
         public int PetId { get; set; }
+        [Display(Name = "Pet's Name")]
         public string Name { get; set; }
         [Display(Name = "Type of Pet")]
         public PetType PetType { get; set; }

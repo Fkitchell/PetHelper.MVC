@@ -1,5 +1,6 @@
 ﻿using PetHelper.Data;
 using PetHelper.Models.AppointmentModels;
+using PetHelper.Models.PetModels;
 using PetHelperMVC.Data;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace PetHelper.Services
             {
                 DateTimeOffSet = model.DateTimeOffSet,
                 PetId = model.PetId,
-                
+
                 ServiceProviderId = model.ServiceProviderId,
                 ServiceType = model.ServiceType
             };
@@ -59,6 +60,22 @@ namespace PetHelper.Services
             };
         }
 
+        public List<PetListDetail> GetPetListByOwnerId()
+        {
+            var entity = _dbContext.Pets.Where(e => e.PetOwnerId == _userId);
+            return entity.Select(a => new PetListDetail
+            {
+                Name = a.Name,
+                PetId = a.PetId,
+                PetType = a.PetType,
+                PetOwner = a.PetOwner
+            }).ToList();
+        }
+
+        public List<ServiceProvider> GetServiceProviders()
+        {
+            return _dbContext.ServiceProviders.ToList();
+        }
         public bool UpdateAppointment(AppointmentEdit model)
         {
             var entity = _dbContext.Appointments.Single(e => e.AppointmentId == model.AppoinmentId && e.Pet.PetOwnerId == _userId);

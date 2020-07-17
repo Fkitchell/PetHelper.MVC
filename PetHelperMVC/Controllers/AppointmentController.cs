@@ -18,10 +18,24 @@ namespace PetHelperMVC.Controllers
             return new AppointmentService(userId);
         }
 
+        public PartialViewResult RenderServiceProviders()
+        {
+            var service = CreateAppointmentService();
+            return PartialView(service.GetServiceProviders());
+
+        }
+
+        public PartialViewResult RenderPetsByPetOwnerId()
+        {
+            var service = CreateAppointmentService();
+            return PartialView(service.GetPetListByOwnerId());
+
+        }
+
         // GET: Appointment/Create
         public ActionResult Create()
         {
-            return View();
+             return View();
         }
 
         // POST: Appointment/Create

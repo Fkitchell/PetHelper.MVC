@@ -15,6 +15,8 @@ namespace PetHelper.Data
 
         [Display(Name = "Date and Time")]
         [Required]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-ddThh:mm:ss}")]
         public DateTimeOffset DateTimeOffSet { get; set; }
 
         //[ForeignKey("PetOwner")]   //consider removing this because Pet has a FK of PetOwner, and if there is an Appointment tied to a pet, then it is inherently tied to the PetOwner of that Pet

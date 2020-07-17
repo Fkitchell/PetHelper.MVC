@@ -10,6 +10,7 @@ namespace PetHelper.Models.PetModels
 {
     public class PetCreate
     {
+        [Display(Name="Pet's Name")]
         public string Name { get; set; }
 
         [Display(Name = "Type of Pet")]
