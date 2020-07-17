@@ -14,7 +14,6 @@ namespace PetHelper.Data
         public int AppointmentId { get; set; }
 
         [Display(Name = "Date and Time")]
-        //[Required]
         [DataType(DataType.DateTime)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-ddThh:mm:ss}")]
         public DateTime DateTime { get; set; }

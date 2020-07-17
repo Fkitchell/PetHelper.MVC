@@ -24,9 +24,8 @@ namespace PetHelper.Services
         {
             var entity = new Appointment
             {
-                DateTime = model.DateTime,
                 PetId = model.PetId,
-
+                DateTime = model.DateTime,
                 ServiceProviderId = model.ServiceProviderId,
                 ServiceType = model.ServiceType
             };

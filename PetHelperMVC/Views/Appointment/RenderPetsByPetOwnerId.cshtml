@@ -27,9 +27,9 @@
                 @Html.DisplayFor(modelItem => item.PetType)
             </td>
             <td class="text-center">
-                <input data-val="true" data-val-number="Please select one button corresponding to your pet." data-val-required="Please select one button corresponding to your pet." id="item_PetId" name="item.PetId" type="radio" value="@item.PetId">
+                @Html.RadioButtonFor(modleItem =>item.PetId, item.PetId)
             </td>
         </tr>
     }
-
+    @ViewBag.PetId = 
 </table>
