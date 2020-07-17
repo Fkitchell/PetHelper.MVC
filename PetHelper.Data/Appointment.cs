@@ -14,10 +14,10 @@ namespace PetHelper.Data
         public int AppointmentId { get; set; }
 
         [Display(Name = "Date and Time")]
-        [Required]
-        [DataType(DataType.Time)]
+        //[Required]
+        [DataType(DataType.DateTime)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-ddThh:mm:ss}")]
-        public DateTimeOffset DateTimeOffSet { get; set; }
+        public DateTime DateTime { get; set; }
 
         //[ForeignKey("PetOwner")]   //consider removing this because Pet has a FK of PetOwner, and if there is an Appointment tied to a pet, then it is inherently tied to the PetOwner of that Pet
         //[Required]
@@ -32,7 +32,7 @@ namespace PetHelper.Data
 
         [ForeignKey("ServiceProvider")]
         [Display(Name = "Service Provider")]
-        [Required]
+        //[Required]
         public string ServiceProviderId { get; set; }
         public virtual ServiceProvider ServiceProvider { get; set; }
 

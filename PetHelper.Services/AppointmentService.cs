@@ -24,7 +24,7 @@ namespace PetHelper.Services
         {
             var entity = new Appointment
             {
-                DateTimeOffSet = model.DateTimeOffSet,
+                DateTime = model.DateTime,
                 PetId = model.PetId,
 
                 ServiceProviderId = model.ServiceProviderId,
@@ -41,7 +41,7 @@ namespace PetHelper.Services
             {
                 Pet = a.Pet,
                 ServiceProvider = a.ServiceProvider,
-                DateTimeOffSet = a.DateTimeOffSet,
+                DateTime = a.DateTime,
                 ServiceType = a.ServiceType,
                 AppointmentId = a.AppointmentId
             }).ToList();
@@ -54,7 +54,7 @@ namespace PetHelper.Services
             {
                 Pet = entity.Pet,
                 ServiceProvider = entity.ServiceProvider,
-                DateTimeOffSet = entity.DateTimeOffSet,
+                DateTime = entity.DateTime,
                 ServiceType = entity.ServiceType,
                 AppointmentId = entity.AppointmentId
             };
@@ -81,7 +81,7 @@ namespace PetHelper.Services
             var entity = _dbContext.Appointments.Single(e => e.AppointmentId == model.AppoinmentId && e.Pet.PetOwnerId == _userId);
 
             entity.Pet = model.Pet;
-            entity.DateTimeOffSet = model.DateTimeOffSet;
+            entity.DateTime = model.DateTime;
             entity.ServiceProviderId = model.ServiceProviderId;
             entity.ServiceType = model.ServiceType;
 

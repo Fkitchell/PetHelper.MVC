@@ -56,6 +56,15 @@
   <ItemGroup>
     <Compile Include="Appointment.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\202007160309430_InitialCreate.cs" />
+    <Compile Include="Migrations\202007160309430_InitialCreate.Designer.cs">
+      <DependentUpon>202007160309430_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007171548267_InitialMigration.cs" />
+    <Compile Include="Migrations\202007171548267_InitialMigration.Designer.cs">
+      <DependentUpon>202007171548267_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Pet.cs" />
     <Compile Include="PetOwner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,6 +73,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202007160309430_InitialCreate.resx">
+      <DependentUpon>202007160309430_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007171548267_InitialMigration.resx">
+      <DependentUpon>202007171548267_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

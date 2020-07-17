@@ -11,7 +11,7 @@ namespace PetHelper.Models.AppointmentModels
     public class AppointmentCreate
     {
         [Display(Name = "Date and Time")]
-        public DateTimeOffset DateTimeOffSet { get; set; }
+        public DateTime DateTime { get; set; }
 
         public int PetId { get; set; }
 
